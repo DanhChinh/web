@@ -1,21 +1,20 @@
-var password = Symbol("password");
+
+let table  = document.querySelector("table");
 
 
-let user = {
-    name:"Trang",
-    age:21,
-    address:{
-        city:"Ha Noi",
-        street:"Tay Son"
-    },
-    [password]: 34453,
+let row_index = 0;
+let col_index = 0;
 
-    [Symbol.toPrimitive](hint){
-        // alert(`hint: ${hint}`);
-        return hint == "string" ? this.name : this.age;
+for(row of  table.rows){
+    for(cell of row.cells){
+        // console.log(cell)
+        cell.innerText = `${row_index}_${col_index}`;
+        if(row_index<5){
+            cell.style.color = "red";
+        }
+        col_index+=1;
     }
+    row_index+=1;
+    col_index = 0;
+
 }
-
-
-
-console.log(user+1)
